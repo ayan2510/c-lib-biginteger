@@ -317,40 +317,6 @@ char *intdPow(const char *num1, unsigned int n)
 	return res;
 }
 
-char *intdGCD(const char *num1, const char *num2)
-{
-	if (strcmp(num1, "0") == 0 && strcmp(num2, "0") == 0)
-	{
-		char *res = (char *)calloc(2, sizeof(char));
-		res[0] = '0';
-		res[1] = '\0';
-		return res;
-	}
-
-	if (strcmp(num1, "0") == 0)
-	{
-		char *res = (char *)calloc(strlen(num2) + 1, sizeof(char));
-		int i = 0;
-		for (i = 0; i < strlen(num2); i++)
-			res[i] = num2[i];
-		res[i] = '\0';
-		return res;
-	}
-	if (strcmp(num2, "0") == 0)
-	{
-		char *res = (char *)calloc(strlen(num1) + 1, sizeof(char));
-		int i = 0;
-		for (i = 0; i < strlen(num1); i++)
-			res[i] = num1[i];
-		res[i] = '\0';
-		return res;
-	}
-	char *temp = intdMod(num1, num2);
-	char *res = intdGCD(num2, temp);
-	free(temp);
-	return res;
-}
-
 char *intdFibonacci(unsigned int n)
 {
 	unsigned int i;
@@ -398,43 +364,6 @@ char *intdFactorial(unsigned int n)
 
 	free(num);
 	return removeLeadingZeroes(res);
-}
-
-char *intdBincoeff(unsigned int n, unsigned int k)
-{
-	unsigned int i = 0;
-	unsigned int j = 0;
-
-	if (k > (n - k))
-		k = n - k;
-	char **dp = (char **)malloc(sizeof(char *) * (k + 1));
-	dp[0] = (char *)malloc(2 * sizeof(char));
-
-	strcpy(dp[0], "1");
-
-	for (i = 1; i <= k; i++)
-	{
-		dp[i] = (char *)malloc(2 * sizeof(char));
-		strcpy(dp[i], "0");
-	}
-
-	char *temp;
-	for (i = 1; i <= n; i++)
-	{
-		for (j = (i > k) ? k : i; j > 0; j--)
-		{
-			temp = intdAdd(dp[j], dp[j - 1]);
-			free(dp[j]);
-			dp[j] = temp;
-		}
-	}
-	char *res = (char *)malloc(sizeof(char) * (strlen(dp[k]) + 1));
-	strcpy(res, dp[k]);
-	for (i = 0; i <= k; i++)
-		free(dp[i]);
-
-	free(dp);
-	return res;
 }
 
 int intdMax(char **arr, int n)
