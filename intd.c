@@ -265,9 +265,9 @@ char *intdMultiply(const char *num1, const char *num2)
 char *intdMod(const char *num1, const char *num2)
 {
 	int comp = intdCompare(num1, num2);
-	int l1 = strlen(num1);
-	int l2 = strlen(num2);
-	int i;
+// 	int l1 = strlen(num1);
+// 	int l2 = strlen(num2);
+// 	int i;
 
 	if (isZero(num1) || comp == 0)
 	{
@@ -281,42 +281,9 @@ char *intdMod(const char *num1, const char *num2)
 		strcpy(res, num1);
 		return res;
 	}
-	int diff = l1 - l2;
-	if (num1[0] <= num2[0])
-		diff--;
-
-	if (diff == 0)
-	{
-		char *temp = intdDiff(num1, num2);
-		char *t2 = temp;
-		char *res = intdMod(temp, num2);
-		free(t2);
-		return res;
-	}
-	char *ni1 = (char *)malloc(sizeof(char) * (l1 + 1));
-	strcpy(ni1, num1);
-	char *ni2 = (char *)malloc(sizeof(char) * (l2 + diff + 2));
-	for (i = 0; i < l2; i++)
-		ni2[i] = num2[i];
-	for (i = 0; i < diff; i++)
-		ni2[l2 + i] = 48;
-	ni2[l2 + i] = '\0';
-
-	while (intdCompare(ni1, ni2) > 0)
-	{
-		char *temp = intdDiff(ni1, ni2);
-		char *t2 = ni1;
-		ni1 = temp;
-		free(t2);
-	}
-	free(ni2);
-
-	if (intdCompare(ni1, num2) <= 0)
-		return ni1;
-
-	char *temp = ni1;
-	char *res = intdMod(ni1, num2);
-	free(temp);
+	
+	char *temp = intdDiff(num1, num2);
+	char *res = intdMod(temp, num2);
 	return res;
 }
 
