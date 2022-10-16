@@ -4,7 +4,6 @@ The integer is stored as a null terminated string of ASCII characters.
 String of decimal digits ('0' to '9') are stored in big endian style.
 
 DO NOT modify this header file.
-Your deliverable is the implementation file.
 The implementation file has the definition of the functions decalred here.
 You can write some of your own helper functions, keep them "static". */
 
@@ -40,11 +39,6 @@ char *intdMod(const char *num1, const char *num2);
 // DONE
 char *intdPow(const char *num, unsigned int n);
 
-// Returns Greatest Common Devisor of num1 and num2.
-// Let GCD be "0" if both num1 and num2 are "0" even though it is undefined, mathematically.
-// DONE
-char *intdGCD(const char *num1, const char *num2);
-
 // Returns nth fibonacci number.
 // DONE
 char *intdFibonacci(unsigned int n);
@@ -52,13 +46,6 @@ char *intdFibonacci(unsigned int n);
 // Returns the factorial of n.
 // DONE
 char *intdFactorial(unsigned int n);
-
-// Returns the Binomial Coefficient C(n,k).
-// 0 <= k <= n
-// C(n,k) < 10^1000 because the returning value is expected to be less than 10^1000.
-// The Pascal's identity C(n,k) = C(n-1,k) + C(n-1,k-1)
-// DONE
-char *intdBincoeff(unsigned int n, unsigned int k);
 
 // Returns the offset of the largest num in the array.
 // Return the smallest offset if there are multiple occurrences.
