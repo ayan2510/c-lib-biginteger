@@ -453,7 +453,7 @@ static void merge(char **arr, int low, int mid, int high)
 	k = low;
 	while (i < n1 && j < n2)
 	{
-		if (intal_compare(left[i], right[j]) <= 0)
+		if (intdCompare(left[i], right[j]) <= 0)
 		{
 			strcpy(arr[k], left[i]);
 			i++;
